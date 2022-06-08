@@ -4,6 +4,7 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 use League\ISO3166\ISO3166;
+use Throwable;
 
 class ValidCountryCode implements Rule
 {
@@ -30,7 +31,7 @@ class ValidCountryCode implements Rule
             (new ISO3166)->alpha2($value);
 
             return true;
-        } catch (\Throwable$th) {
+        } catch (Throwable $th) {
             return false;
         }
     }
