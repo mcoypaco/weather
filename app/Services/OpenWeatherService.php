@@ -97,4 +97,22 @@ class OpenWeatherService implements OpenWeatherServiceInterface
             ->throw()
             ->json();
     }
+
+    /**
+     * HTTP GET request to /data/2.5/onecall endpoint.
+     * https://openweathermap.org/api/one-call-api#current
+     *
+     * @param array $query
+     * @return array
+     */
+    public function oneCall(array $query)
+    {
+        $url = sprintf('%s/data/2.5/onecall', config('services.open_weather.url'));
+
+        Arr::set($query, 'appid', config('services.open_weather.api_key'));
+
+        return Http::get($url, $query)
+            ->throw()
+            ->json();
+    }
 }
