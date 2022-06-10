@@ -10,7 +10,9 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@heroicons/vue": "^1.0.6",
         "@popperjs/core": "^2.10.2",
+        "@tailwindcss/forms": "^0.5.2",
         "@vue/compat": "^3.1.0",
         "@vue/compiler-sfc": "^3.1.0",
         "autoprefixer": "^10.4.7",
@@ -32,9 +34,6 @@
         "sass-loader": "^11.0.1",
         "tailwindcss": "^3.0.24",
         "vue": "^3.1.0",
-        "vue-loader": "^16.0.0",
-        "weather-icons": "^1.3.2"
-    },
-    "dependencies": {
+        "vue-loader": "^16.0.0"
     }
 }

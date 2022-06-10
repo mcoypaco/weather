@@ -1,15 +1,29 @@
 <template>
-  <div class="container">
-    <h1 class="text-3xl font-bold">
-      Home Page
-    </h1>
+  <div>
+    <!-- <ManageLocationsModal class="hidden md:block" /> -->
+    <MainLayout />
+    <SettingsLayout class="lg:hidden" />
+    <ManageLocationsLayout class="sm:hidden" />
   </div>
 </template>
 
 <script>
+import ManageLocationsModal from '../Components/ManageLocationsModal'
+import MainLayout from '../Layouts/MainLayout.vue'
+import ManageLocationsLayout from '../Layouts/ManageLocationsLayout.vue'
+import SettingsLayout from '../Layouts/SettingsLayout.vue'
+
 export default {
-  mounted () {
-    console.log('Component mounted.')
+  components: {
+    ManageLocationsModal,
+    MainLayout,
+    SettingsLayout,
+    ManageLocationsLayout
+  },
+  data () {
+    return {
+      //
+    }
   }
 }
 </script>
