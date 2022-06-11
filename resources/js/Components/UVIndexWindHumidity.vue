@@ -24,7 +24,6 @@
   </div>
 </template>
 <script>
-import { DateTime } from 'luxon'
 import { mapStores } from 'pinia'
 import main from '../Stores/main'
 
