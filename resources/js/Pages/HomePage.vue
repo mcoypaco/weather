@@ -1,9 +1,18 @@
 <template>
   <div>
-    <!-- <ManageLocationsModal class="hidden md:block" /> -->
-    <MainLayout />
-    <SettingsLayout class="lg:hidden" />
-    <ManageLocationsLayout class="sm:hidden" />
+    <ManageLocationsModal
+      v-if="showLocationsForm"
+      class="hidden xl:block"
+    />
+    <MainLayout v-if="!showLocationsForm && !showSettings" />
+    <SettingsLayout
+      v-if="showSettings"
+      class="xl:hidden"
+    />
+    <ManageLocationsLayout
+      v-if="showLocationsForm"
+      class="xl:hidden"
+    />
   </div>
 </template>
 
@@ -30,7 +39,80 @@ export default {
     }
   },
   computed: {
-    ...mapStores(main)
+    ...mapStores(main),
+
+    /**
+     *
+     *
+     */
+    showLocationsForm () {
+      try {
+        return this.mainStore.showLocationsForm
+      } catch (error) {
+        return false
+      }
+    },
+
+    /**
+     *
+     *
+     */
+    showSettings () {
+      try {
+        return this.mainStore.showSettings
+      } catch (error) {
+        return false
+      }
+    },
+
+    /**
+     *
+     *
+     */
+    currentLocation () {
+      try {
+        return this.mainStore.currentLocation
+      } catch (error) {
+        return null
+      }
+    },
+
+    /**
+     *
+     *
+     */
+    units () {
+      try {
+        return this.mainStore.units
+      } catch (error) {
+        return null
+      }
+    }
+  },
+  watch: {
+    /**
+     *
+     *
+     */
+    currentLocation () {
+      try {
+        this.getWeatherForecast(this.mainStore.currentLocation.lat, this.mainStore.currentLocation.lon, this.mainStore.units)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+
+    /**
+     *
+     *
+     */
+    units () {
+      try {
+        this.getWeatherForecast(this.mainStore.currentLocation.lat, this.mainStore.currentLocation.lon, this.mainStore.units)
+      } catch (error) {
+        console.error(error)
+      }
+    }
   },
   created () {
     navigator.geolocation.getCurrentPosition(async (position) => {
@@ -50,13 +132,53 @@ export default {
 
       // Store the current location.
       if (location) {
-        this.mainStore.$patch({ currentLocation: location })
-
-        this.getWeatherForecast(this.mainStore.currentLatitude, this.mainStore.currentLongitude, this.mainStore.units)
+        this.storeLocation(location)
       }
+    }, () => {
+      let locations
+
+      try {
+        locations = JSON.parse(localStorage.getItem('locations'))
+      } catch (error) {
+        locations = []
+      }
+
+      this.mainStore.$patch({
+        locations,
+        showLocationsForm: true
+      })
     })
   },
   methods: {
+    /**
+     *
+     *
+     */
+    storeLocation (location) {
+      let locations
+
+      try {
+        locations = JSON.parse(localStorage.getItem('locations'))
+      } catch (error) {
+        locations = []
+      }
+
+      const exists = locations.filter(item => {
+        return item.name === location[0].name
+      })
+
+      if (!exists.length) locations.push(location[0])
+
+      // Store to localstorage.
+      localStorage.setItem('locations', JSON.stringify(locations))
+
+      // Update the store.
+      this.mainStore.$patch({
+        currentLocation: location[0],
+        locations
+      })
+    },
+
     /**
      *
      * @param string lat
@@ -64,6 +186,8 @@ export default {
      * @param units lon
      */
     async getWeatherForecast (lat, lon, units) {
+      this.mainStore.$patch({ loading: true })
+
       const responses = await Promise.all([
         this.currentWeather(lat, lon, units),
         this.forecast(lat, lon, units),
@@ -75,10 +199,9 @@ export default {
       this.mainStore.$patch({
         currentWeather: responses[0],
         forecast: responses[1],
-        oneCall: responses[2]
+        oneCall: responses[2],
+        loading: false
       })
-
-      console.log({ responses })
     },
 
     /**

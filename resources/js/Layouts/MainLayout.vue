@@ -2,19 +2,27 @@
   <div class="flex min-h-screen dark:bg-slate-800 dark:text-white px-4 py-4">
     <SideNav class="hidden xl:block" />
     <div class="container md:my-12 max-w-3xl mx-auto xl:pl-60">
-      <div class="flex flex-row-reverse sm:hidden">
-        <CogIcon class="w-8 h-8 mb-8 cursor-pointer" />
+      <div v-if="loading">
+        Loading...
       </div>
+      <template v-else>
+        <div class="flex flex-row-reverse xl:hidden">
+          <CogIcon
+            class="w-8 h-8 mb-8 cursor-pointer"
+            @click="showSettings"
+          />
+        </div>
 
-      <WeatherNow />
+        <WeatherNow />
 
-      <WeatherToday />
+        <WeatherToday />
 
-      <WeatherWeek />
+        <WeatherWeek />
 
-      <SunriseSunset />
+        <SunriseSunset />
 
-      <UVIndexWindHumidity />
+        <UVIndexWindHumidity />
+      </template>
     </div>
   </div>
 </template>
@@ -26,6 +34,8 @@ import UVIndexWindHumidity from '../Components/UVIndexWindHumidity'
 import WeatherNow from '../Components/WeatherNow'
 import WeatherToday from '../Components/WeatherToday'
 import WeatherWeek from '../Components/WeatherWeek'
+import { mapStores } from 'pinia'
+import main from '../Stores/main'
 
 export default {
   components: {
@@ -39,7 +49,35 @@ export default {
   },
   data () {
     return {
+      //
+    }
+  },
+  computed: {
+    ...mapStores(main),
 
+    /**
+     *
+     *
+     */
+    loading () {
+      try {
+        return this.mainStore.loading
+      } catch (error) {
+        return false
+      }
+    }
+  },
+  methods: {
+    /**
+     *
+     *
+     */
+    showSettings () {
+      try {
+        this.mainStore.$patch({ showSettings: true })
+      } catch (error) {
+        console.error(error)
+      }
     }
   }
 }

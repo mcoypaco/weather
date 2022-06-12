@@ -9,7 +9,11 @@ export default defineStore('main', {
       units: 'metric',
       currentWeather: null,
       oneCall: null,
-      forecast: null
+      forecast: null,
+      showLocationsForm: false,
+      locations: null,
+      showSettings: false,
+      loading: false
     }
   }
 })

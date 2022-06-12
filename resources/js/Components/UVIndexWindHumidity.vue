@@ -3,21 +3,21 @@
     <div class="flex-auto w-24 flex flex-col items-center">
       <i class="wi wi-sunrise text-4xl mb-3" />
       <p>UV Index</p>
-      <p class="text-slate-300">
+      <p class="dark:text-slate-300 text-slate-500">
         {{ uvIndex }}
       </p>
     </div>
     <div class="flex-auto w-24 flex flex-col items-center border-x-slate-500 dark:border-x-slate-100 border-x-2">
       <i class="wi wi-strong-wind text-4xl mb-3" />
       <p>Wind</p>
-      <p class="text-slate-300">
+      <p class="dark:text-slate-300 text-slate-500">
         {{ wind }}
       </p>
     </div>
     <div class="flex-auto w-24 flex flex-col items-center ">
       <i class="wi wi-humidity text-4xl mb-3" />
       <p>Humidity</p>
-      <p class="text-slate-300">
+      <p class="dark:text-slate-300 text-slate-500">
         {{ humidity }}
       </p>
     </div>
