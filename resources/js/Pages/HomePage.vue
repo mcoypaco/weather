@@ -115,6 +115,8 @@ export default {
     }
   },
   created () {
+    this.mainStore.$patch({ loading: true })
+
     navigator.geolocation.getCurrentPosition(async (position) => {
       // Sets current latitude and longitude to pinia.
       this.mainStore.$patch({
@@ -138,7 +140,7 @@ export default {
       let locations
 
       try {
-        locations = JSON.parse(localStorage.getItem('locations'))
+        locations = JSON.parse(localStorage.getItem('locations')) || []
       } catch (error) {
         locations = []
       }
@@ -158,7 +160,7 @@ export default {
       let locations
 
       try {
-        locations = JSON.parse(localStorage.getItem('locations'))
+        locations = JSON.parse(localStorage.getItem('locations')) || []
       } catch (error) {
         locations = []
       }
