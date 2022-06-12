@@ -132,6 +132,8 @@ export default {
      */
     setMetricUnits () {
       try {
+        localStorage.setItem('units', 'metric')
+
         this.mainStore.$patch({
           units: 'metric',
           showSettings: false
@@ -147,6 +149,8 @@ export default {
      */
     setImperialUnits () {
       try {
+        localStorage.setItem('units', 'imperial')
+
         this.mainStore.$patch({
           units: 'imperial',
           showSettings: false

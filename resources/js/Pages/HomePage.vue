@@ -117,6 +117,8 @@ export default {
   created () {
     this.mainStore.$patch({ loading: true })
 
+    this.setDefaultUnits()
+
     navigator.geolocation.getCurrentPosition(async (position) => {
       // Sets current latitude and longitude to pinia.
       this.mainStore.$patch({
@@ -152,6 +154,26 @@ export default {
     })
   },
   methods: {
+    /**
+     *
+     *
+     */
+    setDefaultUnits () {
+      try {
+        const units = localStorage.getItem('units')
+
+        if (!units) {
+          localStorage.setItem('units', 'metric')
+
+          this.mainStore.$patch({ units: 'metric' })
+        } else {
+          this.mainStore.$patch({ units })
+        }
+      } catch (error) {
+        console.error(error)
+      }
+    },
+
     /**
      *
      *
