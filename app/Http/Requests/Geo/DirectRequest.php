@@ -35,6 +35,7 @@ class DirectRequest extends FormRequest
                 Rule::in(array_keys(config('services.open_weather.state_codes'))),
             ],
             'country_code' => [
+                'sometimes',
                 'required',
                 'string',
                 'max:2',

@@ -45,7 +45,9 @@ class GeoController extends Controller
             array_push($q, Arr::get($validatedRequest, 'state_code'));
         }
 
-        array_push($q, Arr::get($validatedRequest, 'country_code'));
+        if (Arr::has($validatedRequest, 'country_code')) {
+            array_push($q, Arr::get($validatedRequest, 'country_code'));
+        }
 
         $query = [
             'q' => implode(',', $q),
