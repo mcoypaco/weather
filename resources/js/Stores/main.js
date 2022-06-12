@@ -6,7 +6,7 @@ export default defineStore('main', {
       currentLatitude: null,
       currentLongitude: null,
       currentLocation: null,
-      units: 'metric',
+      units: null,
       currentWeather: null,
       oneCall: null,
       forecast: null,
