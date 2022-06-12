@@ -48,4 +48,13 @@ interface OpenWeatherServiceInterface
      * @return array
      */
     public function forecast(array $query);
+
+    /**
+     * HTTP GET request to /data/2.5/onecall endpoint.
+     * https://openweathermap.org/api/one-call-api#current
+     *
+     * @param array $query
+     * @return array
+     */
+    public function oneCall(array $query);
 }

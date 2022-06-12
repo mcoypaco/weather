@@ -63,6 +63,34 @@ class DirectTest extends TestCase
     ];
 
     /**
+     * Test city.
+     *
+     * @return void
+     */
+    public function test_city()
+    {
+        $this->fake();
+
+        $query = [
+            'city' => 'London',
+        ];
+
+        $response = $this->json('GET', '/api/geo/direct', $query);
+
+        $response->assertStatus(200)
+            ->assertJson($this->apiResponse);
+
+        Http::assertSent(function (Request $request) {
+            return $request->url() == sprintf(
+                '%s/geo/1.0/direct?q=%s&appid=%s',
+                config('services.open_weather.url'),
+                rawurlencode('London'),
+                config('services.open_weather.api_key')
+            );
+        });
+    }
+
+    /**
      * Test city and country_code.
      *
      * @return void
@@ -96,13 +124,12 @@ class DirectTest extends TestCase
      *
      * @return void
      */
-    public function test_city_country_code_limit()
+    public function test_city_limit()
     {
         $this->fake();
 
         $query = [
             'city' => 'London',
-            'country_code' => 'GB',
             'limit' => 5,
         ];
 
@@ -115,7 +142,7 @@ class DirectTest extends TestCase
             return $request->url() == sprintf(
                 '%s/geo/1.0/direct?q=%s&limit=%s&appid=%s',
                 config('services.open_weather.url'),
-                rawurlencode('London,GB'),
+                rawurlencode('London'),
                 5,
                 config('services.open_weather.api_key')
             );
@@ -164,8 +191,7 @@ class DirectTest extends TestCase
         $response = $this->json('GET', '/api/geo/direct');
 
         $response->assertStatus(422)
-            ->assertJsonValidationErrors('city')
-            ->assertJsonValidationErrors('country_code');
+            ->assertJsonValidationErrors('city');
     }
 
     /**

@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Geo;
+namespace App\Http\Requests\WeatherForecast;
 
-use App\Rules\ValidCountryCode;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class DirectRequest extends FormRequest
+class OnecallRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,22 +25,25 @@ class DirectRequest extends FormRequest
     public function rules()
     {
         return [
-            'city' => 'required|string',
-            'state_code' => [
+            'lat' => 'required|numeric',
+            'lon' => 'required|numeric',
+            'exclude' => 'sometimes|required|string',
+            'units' => [
                 'sometimes',
                 'required',
                 'string',
-                'exclude_unless:country_code,US',
-                Rule::in(array_keys(config('services.open_weather.state_codes'))),
+                Rule::in([
+                    'standard',
+                    'metric',
+                    'imperial',
+                ]),
             ],
-            'country_code' => [
+            'lang' => [
                 'sometimes',
                 'required',
                 'string',
-                'max:2',
-                new ValidCountryCode,
+                Rule::in(array_keys(config('services.open_weather.lang'))),
             ],
-            'limit' => 'sometimes|required|numeric',
         ];
     }
 }

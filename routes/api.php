@@ -24,4 +24,5 @@ Route::prefix('geo')->group(function () {
 Route::prefix('weather-forecast')->group(function () {
     Route::get('forecast', [WeatherForecastController::class, 'forecast']);
     Route::get('weather', [WeatherForecastController::class, 'weather']);
+    Route::get('onecall', [WeatherForecastController::class, 'onecall']);
 });
