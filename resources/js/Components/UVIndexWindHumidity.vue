@@ -1,21 +1,21 @@
 <template>
   <div class="flex flex-row px-8 py-8 dark:bg-slate-500 border-slate-500 border-2 rounded-3xl shadow-lg">
     <div class="flex-auto w-24 flex flex-col items-center">
-      <i class="wi wi-sunrise text-4xl mb-3" />
+      <i class="wi wi-sunrise text-4xl mb-3 text-yellow-300" />
       <p>UV Index</p>
       <p class="dark:text-slate-300 text-slate-500">
         {{ uvIndex }}
       </p>
     </div>
     <div class="flex-auto w-24 flex flex-col items-center border-x-slate-500 dark:border-x-slate-100 border-x-2">
-      <i class="wi wi-strong-wind text-4xl mb-3" />
+      <i class="wi wi-strong-wind text-4xl mb-3 text-gray-500 dark:text-gray-300" />
       <p>Wind</p>
       <p class="dark:text-slate-300 text-slate-500">
         {{ wind }}
       </p>
     </div>
     <div class="flex-auto w-24 flex flex-col items-center ">
-      <i class="wi wi-humidity text-4xl mb-3" />
+      <i class="wi wi-humidity text-4xl mb-3 text-blue-500" />
       <p>Humidity</p>
       <p class="dark:text-slate-300 text-slate-500">
         {{ humidity }}

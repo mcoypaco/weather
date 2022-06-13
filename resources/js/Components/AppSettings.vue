@@ -1,7 +1,7 @@
 <template>
   <div class="min-w-full py-8 px-8">
     <div class="flex flex-row mb-4">
-      <StarIcon class="w-6 h-6 mr-2" />
+      <StarIcon class="w-6 h-6 mr-2 text-yellow-500" />
       Favorites
     </div>
 
@@ -12,7 +12,7 @@
       @click="setCurrentLocation(location)"
     >
       <div class="flex flex-row items-center ml-6">
-        <LocationMarkerIcon class="w-4 h-4 mr-2" />
+        <LocationMarkerIcon class="w-4 h-4 mr-2 text-gray-500 dark:text-gray-300" />
         <div class="font-semibold">
           {{ location.name }}
         </div>
@@ -21,7 +21,7 @@
 
     <div class="my-4 pb-4 border-b-2 border-dashed">
       <div
-        class="py-2 px-2 rounded-3xl dark:bg-slate-500 border-2 border-slate-500 text-center cursor-pointer"
+        class="py-2 px-2 rounded-3xl bg-blue-500 text-white text-center cursor-pointer"
         @click="showLocationsForm"
       >
         Manage Locations

@@ -9,14 +9,14 @@
         {{ time(item) }}
       </div>
       <i
-        class="wi text-2xl mb-2"
+        class="wi text-2xl mb-2 text-gray-500 dark:text-gray-300"
         :class="weatherIcon(item)"
       />
       <div class="mb-4">
         {{ temp(item) }}
       </div>
       <div class="flex flex-row items-center font-light text-md">
-        <i class="wi wi-raindrop mr-1" />
+        <i class="wi wi-raindrop mr-1 text-blue-500" />
         <span>{{ rain(item) }}</span>
       </div>
     </div>

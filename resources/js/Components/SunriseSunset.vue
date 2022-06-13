@@ -3,12 +3,12 @@
     <div class="flex-auto w-36 flex flex-col items-center">
       <p>Sunrise</p>
       <p>{{ sunrise }}</p>
-      <i class="wi wi-sunrise text-7xl mt-6" />
+      <i class="wi wi-sunrise text-7xl mt-6 text-orange-300" />
     </div>
     <div class="flex-auto w-36 flex flex-col items-center">
       <p>Sunset</p>
       <p>{{ sunset }}</p>
-      <i class="wi wi-sunset text-7xl mt-6" />
+      <i class="wi wi-sunset text-7xl mt-6 text-orange-500" />
     </div>
   </div>
 </template>

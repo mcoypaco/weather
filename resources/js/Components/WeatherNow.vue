@@ -10,11 +10,11 @@
           <h2 class="text-2xl font-light mr-1">
             {{ city }}
           </h2>
-          <LocationMarkerIcon class="h-6 w-6" />
+          <LocationMarkerIcon class="h-6 w-6 text-gray-500 dark:text-gray-300" />
         </div>
       </div>
       <i
-        class="wi text-8xl mt-2"
+        class="wi text-8xl mt-2 text-gray-500 dark:text-gray-300"
         :class="weatherIcon"
       />
     </div>

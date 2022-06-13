@@ -16,11 +16,11 @@
       </p>
       <div class="flex-auto flex flex-row justify-between items-center">
         <div class="flex flex-row items-center font-light text-sm">
-          <i class="wi wi-raindrop mr-1" />
+          <i class="wi wi-raindrop mr-1 text-blue-500" />
           <span>{{ chanceOfRain(item) }}</span>
         </div>
         <i
-          class="wi text-lg"
+          class="wi text-lg text-gray-500 dark:text-gray-300"
           :class="weatherIcon(item)"
         />
         <div>
