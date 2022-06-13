@@ -10,7 +10,7 @@
         placeholder="Enter city name..."
         @input="search(searchText)"
       >
-      <SearchIcon class="w-8 h-8" />
+      <SearchIcon class="w-8 h-8 text-gray-500" />
     </div>
 
     <div
@@ -21,7 +21,7 @@
     >
       <div class="flex flex-col">
         <div class="flex flex-row items-center">
-          <LocationMarkerIcon class="w-4 h-4 mr-2" />
+          <LocationMarkerIcon class="w-4 h-4 mr-2 text-gray-500 dark:text-gray-300" />
           <div class="font-semibold">
             {{ city(item) }}
           </div>
@@ -47,7 +47,7 @@
         @click="setCurrentLocation(location)"
       >
         <div class="flex flex-row items-center">
-          <LocationMarkerIcon class="w-4 h-4 mr-2" />
+          <LocationMarkerIcon class="w-4 h-4 mr-2 text-gray-500 dark:text-gray-300" />
           <div class="font-semibold">
             {{ city(location) }}
           </div>
@@ -58,7 +58,7 @@
       </div>
 
       <TrashIcon
-        class="w-8 h-8 cursor-pointer"
+        class="w-6 h-6 cursor-pointer text-red-500"
         @click="remove(location)"
       />
     </div>
