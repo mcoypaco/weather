@@ -37,3 +37,6 @@ services:
 networks:
     sail:
         driver: bridge
+volumes:
+    sail-postgres:
+        driver: local
