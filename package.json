@@ -10,6 +10,17 @@
         "url": "https://github.com/mcoypaco/weather/issues"
     },
     "homepage": "https://github.com/mcoypaco/weather#readme",
+    "release": {
+        "branches": [
+            {"name": "main"},
+            {"name": "beta", "prerelease": true}
+        ],
+        "plugins": [
+            ["@semantic-release/npm", {
+              "npmPublish": false
+            }]
+        ]
+    },
     "scripts": {
         "dev": "npm run development",
         "development": "mix",
