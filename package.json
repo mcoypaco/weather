@@ -12,13 +12,38 @@
     "homepage": "https://github.com/mcoypaco/weather#readme",
     "release": {
         "branches": [
-            {"name": "main"},
-            {"name": "beta", "prerelease": true}
+            {
+                "name": "main"
+            },
+            {
+                "name": "beta",
+                "prerelease": true
+            }
         ],
         "plugins": [
-            ["@semantic-release/npm", {
-              "npmPublish": false
-            }]
+            [
+                "@semantic-release/npm",
+                {
+                    "npmPublish": false
+                }
+            ],
+            "@semantic-release/commit-analyzer",
+            "@semantic-release/release-notes-generator",
+            [
+                "@semantic-release/github", 
+                {
+                    "assets": [
+                        {
+                            "path": "dist/asset.min.css", 
+                            "label": "CSS distribution"
+                        },
+                        {
+                            "path": "dist/asset.min.js",
+                            "label": "JS distribution"
+                        }
+                    ]
+                }
+            ]
         ]
     },
     "scripts": {
@@ -34,6 +59,7 @@
     "devDependencies": {
         "@heroicons/vue": "^1.0.6",
         "@popperjs/core": "^2.10.2",
+        "@semantic-release/github": "^8.0.7",
         "@tailwindcss/forms": "^0.5.2",
         "@vue/compat": "^3.1.0",
         "@vue/compiler-sfc": "^3.1.0",
