@@ -10,6 +10,9 @@
         "url": "https://github.com/mcoypaco/weather/issues"
     },
     "homepage": "https://github.com/mcoypaco/weather#readme",
+    "release": {
+        "branches": ["main", "beta"]
+    },
     "scripts": {
         "dev": "npm run development",
         "development": "mix",
