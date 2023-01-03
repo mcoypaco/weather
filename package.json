@@ -1,5 +1,15 @@
 {
-    "private": true,
+    "name": "weather",
+    "description": "A simple application that allows users get weather information based on the selected city.",
+    "version": "0.0.0-development",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mcoypaco/weather.git"
+    },
+    "bugs": {
+        "url": "https://github.com/mcoypaco/weather/issues"
+    },
+    "homepage": "https://github.com/mcoypaco/weather#readme",
     "scripts": {
         "dev": "npm run development",
         "development": "mix",
@@ -7,7 +17,8 @@
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
-        "production": "mix --production"
+        "production": "mix --production",
+        "semantic-release": "semantic-release"
     },
     "devDependencies": {
         "@heroicons/vue": "^1.0.6",
@@ -34,6 +45,7 @@
         "resolve-url-loader": "^5.0.0",
         "sass": "^1.32.11",
         "sass-loader": "^11.0.1",
+        "semantic-release": "^19.0.5",
         "tailwindcss": "^3.0.24",
         "vue": "^3.1.0",
         "vue-loader": "^16.0.0"
