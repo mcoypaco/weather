@@ -1,1 +1,1 @@
-new feature with some breaking changes
+new feature with some breaking changes. Updated texts.
